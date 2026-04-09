@@ -1,0 +1,37 @@
+---
+import type { ClientData } from '../types/client';
+import MainLayout from '../layouts/MainLayout.astro';
+import HeaderSection from '../sections/HeaderSection.astro';
+import HeroSection from '../sections/HeroSection.astro';
+import AboutSection from '../sections/AboutSection.astro';
+import MenuSection from '../sections/MenuSection.astro';
+import ContactSection from '../sections/ContactSection.astro';
+import FooterSection from '../sections/FooterSection.astro';
+import rawData from '../content/clients/demo-restaurant.json';
+
+const data = rawData as const satisfies ClientData;
+---
+
+<MainLayout title={data.name}>
+  <HeaderSection name={data.name} sections={data.sections} />
+  <main class="pt-16">
+    {data.sections.hero && (
+      <HeroSection
+        name={data.name}
+        tagline={data.tagline}
+        description={data.description}
+        cta={data.cta}
+      />
+    )}
+    {data.sections.about && (
+      <AboutSection about={data.about} />
+    )}
+    {data.sections.menu && (
+      <MenuSection menu={data.menu} cta={data.cta} />
+    )}
+    {data.sections.contact && (
+      <ContactSection contact={data.contact} schedule={data.schedule} />
+    )}
+  </main>
+  <FooterSection name={data.name} social={data.social} />
+</MainLayout>

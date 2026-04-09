@@ -1,0 +1,38 @@
+---
+import type { Menu, CTA } from '../types/client';
+import SectionHeading from '../components/SectionHeading.astro';
+import Button from '../components/Button.astro';
+
+interface Props {
+  menu: Menu;
+  cta: CTA;
+}
+
+const { menu, cta } = Astro.props;
+---
+
+<section id="carta" class="bg-gradient-to-b from-stone-950 to-stone-900 py-20 px-6">
+  <div class="mx-auto max-w-5xl">
+    <SectionHeading title="Nuestra Carta" />
+
+    <div class="mt-12 grid grid-cols-1 gap-8 md:grid-cols-2">
+      {menu.categories.map((category) => (
+        <div class="rounded-xl border border-stone-700 bg-stone-800/50 p-6">
+          <h3 class="mb-4 text-xl font-semibold text-amber-400">{category.name}</h3>
+          <ul class="space-y-3">
+            {category.items.map((item) => (
+              <li class="flex items-baseline justify-between border-b border-dotted border-stone-600 pb-2">
+                <span class="text-stone-200">{item.name}</span>
+                <span class="ml-4 font-semibold text-amber-300">{item.price}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+
+    <div class="mt-12 text-center">
+      <Button text={cta.secondary} href="#carta" variant="secondary" />
+    </div>
+  </div>
+</section>

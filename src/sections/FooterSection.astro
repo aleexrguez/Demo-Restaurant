@@ -1,0 +1,58 @@
+---
+import type { Social } from '../types/client';
+
+interface Props {
+  name: string;
+  social: Social;
+}
+
+const { name, social } = Astro.props;
+
+const socialLinks = [
+  {
+    key: 'instagram',
+    url: social.instagram,
+    label: 'Instagram',
+    svg: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5" ry="5" /><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z" /><line x1="17.5" y1="6.5" x2="17.51" y2="6.5" /></svg>`,
+  },
+  {
+    key: 'tiktok',
+    url: social.tiktok,
+    label: 'TikTok',
+    svg: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.32 6.32 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.74a4.85 4.85 0 01-1.01-.05z"/></svg>`,
+  },
+  {
+    key: 'facebook',
+    url: social.facebook,
+    label: 'Facebook',
+    svg: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>`,
+  },
+] satisfies { key: string; url: string; label: string; svg: string }[];
+
+const visibleLinks = socialLinks.filter((link) => link.url !== '');
+---
+
+<footer class="border-t border-stone-800 bg-stone-950 py-10 px-6">
+  <div class="mx-auto max-w-5xl text-center">
+    <p class="text-lg font-bold text-amber-400">{name}</p>
+
+    {visibleLinks.length > 0 && (
+      <div class="mt-4 flex justify-center gap-6">
+        {visibleLinks.map((link) => (
+          <a
+            href={link.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={link.label}
+            class="text-stone-400 transition-colors hover:text-amber-400"
+            set:html={link.svg}
+          />
+        ))}
+      </div>
+    )}
+
+    <p class="mt-6 text-sm text-stone-500">
+      &copy; {new Date().getFullYear()} {name}. Todos los derechos reservados.
+    </p>
+  </div>
+</footer>
