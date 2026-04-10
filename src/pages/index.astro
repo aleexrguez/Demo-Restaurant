@@ -1,5 +1,5 @@
 ---
-import type { ClientData } from '../types/client';
+import type { ClientData, Schedule } from '../types/client';
 import MainLayout from '../layouts/MainLayout.astro';
 import HeaderSection from '../sections/HeaderSection.astro';
 import HeroSection from '../sections/HeroSection.astro';
@@ -12,9 +12,54 @@ import FooterSection from '../sections/FooterSection.astro';
 import rawData from '../content/clients/demo-restaurant.json';
 
 const data = rawData as const satisfies ClientData;
+
+// Build JSON-LD structured data — all values from client data
+const dayMap: Record<keyof Schedule, string> = {
+  monday: 'Monday',
+  tuesday: 'Tuesday',
+  wednesday: 'Wednesday',
+  thursday: 'Thursday',
+  friday: 'Friday',
+  saturday: 'Saturday',
+  sunday: 'Sunday',
+};
+
+const openingHours = (Object.entries(data.schedule) as [keyof Schedule, string][])
+  .filter(([_, hours]) => hours !== 'Cerrado')
+  .flatMap(([day, hours]) =>
+    hours.split(',').map((range) => {
+      const trimmed = range.trim();
+      const [opens, closes] = trimmed.split(' - ');
+      return {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: dayMap[day],
+        opens: opens?.trim(),
+        closes: closes?.trim(),
+      };
+    })
+  );
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Restaurant',
+  name: data.name,
+  description: data.seo.description,
+  telephone: data.contact.phone,
+  email: data.contact.email,
+  image: data.seo.image,
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: data.contact.address,
+  },
+  openingHoursSpecification: openingHours,
+};
 ---
 
-<MainLayout title={data.name}>
+<MainLayout
+  title={data.seo.title}
+  description={data.seo.description}
+  ogImage={data.seo.image}
+>
   <HeaderSection name={data.name} sections={data.sections} />
   <main class="pt-16">
     {data.sections.hero && (
@@ -43,4 +88,5 @@ const data = rawData as const satisfies ClientData;
     )}
   </main>
   <FooterSection name={data.name} social={data.social} />
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 </MainLayout>

@@ -1,7 +1,7 @@
 {
   "name": "La Trattoria Milano",
-  "tagline": "Auténtica cocina italiana en el corazón de Madrid",
-  "description": "Pasta fresca, pizzas artesanales y el mejor ambiente italiano.",
+  "tagline": "Sabores de la Toscana en cada plato, desde 2005",
+  "description": "Ingredientes frescos del Mercado de la Paz, pasta hecha a mano cada mañana y la hospitalidad que solo una familia italiana puede ofrecer.",
 
   "images": {
     "hero": "/images/hero.webp",
@@ -11,6 +11,12 @@
       { "src": "/images/pizza.webp", "alt": "Pizza napolitana" },
       { "src": "/images/dish.webp", "alt": "Plato del chef" }
     ]
+  },
+
+  "seo": {
+    "title": "La Trattoria Milano | Cocina Italiana Auténtica en Madrid",
+    "description": "Reserva tu mesa en La Trattoria Milano. Pasta fresca artesanal, pizzas napolitanas y ambiente italiano en plena Gran Vía de Madrid. Abierto desde 2005.",
+    "image": "/images/hero.webp"
   },
 
   "featuredDishes": [
@@ -28,7 +34,10 @@
     "phone": "+34 612 345 678",
     "whatsapp": "+34612345678",
     "email": "info@trattoriamilano.es",
-    "address": "Calle Gran Vía 45, Madrid"
+    "address": "Calle Gran Vía 45, Madrid",
+    "ctaHeadline": "¿Querés vivir la experiencia italiana? Reservá tu mesa.",
+    "whatsappLabel": "Reservá por WhatsApp",
+    "whatsappMicrocopy": "Respondemos en menos de 1 hora"
   },
 
   "schedule": {
@@ -42,8 +51,8 @@
   },
 
   "cta": {
-    "primary": "Reservar mesa",
-    "secondary": "Ver carta"
+    "primary": "Reservar mi mesa",
+    "secondary": "Ver la carta"
   },
 
   "menu": {
@@ -72,9 +81,9 @@
   },
 
   "reviews": [
-    { "name": "María G.", "text": "La mejor carbonara de Madrid, sin duda. El ambiente es increíble.", "rating": 5 },
-    { "name": "Carlos R.", "text": "Fuimos para un aniversario y la atención fue impecable. Volveremos seguro.", "rating": 5 },
-    { "name": "Ana P.", "text": "La bruschetta y el tiramisú son espectaculares. Muy recomendable.", "rating": 4 }
+    { "name": "María G.", "text": "Vinimos por nuestro aniversario y todo fue perfecto. La carbonara es la mejor que probé fuera de Roma, sin exagerar. Luca se acercó a la mesa a saludarnos.", "rating": 5 },
+    { "name": "Carlos R.", "text": "Lugar ideal para una cena tranquila. Pedimos la tabla de entrantes y la pizza napolitana. Buenos vinos por copa también.", "rating": 4 },
+    { "name": "Ana P.", "text": "Fui con amigas un viernes y el ambiente estaba genial. El tiramisú es obligatorio. Ya reservamos para volver el mes que viene.", "rating": 5 }
   ],
 
   "sections": {

@@ -22,7 +22,8 @@ const { name, tagline, description, cta, heroImage } = Astro.props;
     class="absolute inset-0 h-full w-full object-cover"
     aria-hidden="true"
   />
-  <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-stone-950"></div>
+  <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_20%,rgba(0,0,0,0.6)_70%)]"></div>
+  <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-stone-950"></div>
   <div class="relative z-10 mx-auto max-w-3xl px-6 py-20 text-center text-white">
     <h1 class="text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
       {name}
@@ -34,7 +35,7 @@ const { name, tagline, description, cta, heroImage } = Astro.props;
       {description}
     </p>
     <div class="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-      <Button text={cta.primary} href="#reservar" variant="primary" />
+      <Button text={cta.primary} href="#contacto" variant="primary" size="lg" />
       <Button text={cta.secondary} href="#carta" variant="secondary" />
     </div>
   </div>

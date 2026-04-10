@@ -12,11 +12,20 @@ export interface Menu {
   categories: MenuCategory[];
 }
 
+export interface SEO {
+  title: string;
+  description: string;
+  image: string;
+}
+
 export interface Contact {
   phone: string;
   whatsapp: string;
   email: string;
   address: string;
+  ctaHeadline: string;
+  whatsappLabel: string;
+  whatsappMicrocopy: string;
 }
 
 export interface Schedule {
@@ -82,6 +91,7 @@ export interface ClientData {
   name: string;
   tagline: string;
   description: string;
+  seo: SEO;
   images: Images;
   about: About;
   contact: Contact;

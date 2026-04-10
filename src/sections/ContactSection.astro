@@ -10,6 +10,9 @@ interface Props {
 
 const { contact, schedule } = Astro.props;
 
+const phoneHref = `tel:${contact.phone.replace(/\s/g, '')}`;
+const whatsappHref = `https://wa.me/${contact.whatsapp.replace(/\s/g, '')}`;
+
 const days = [
   { key: 'monday', label: 'Lunes' },
   { key: 'tuesday', label: 'Martes' },
@@ -26,88 +29,57 @@ const days = [
     <SectionHeading title="Contacto" />
 
     <div class="mt-12 grid grid-cols-1 gap-12 md:grid-cols-2">
-      <!-- Contact info -->
-      <div class="space-y-6">
-        <div class="flex items-center gap-3 text-stone-300">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="20"
-            height="20"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            stroke-width="2"
-            class="shrink-0 text-amber-400"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="M2.25 6.338c0-.828.672-1.5 1.5-1.5h1.372c.648 0 1.218.425 1.414 1.043l.815 2.714a1.5 1.5 0 01-.328 1.536l-.8.801a11.21 11.21 0 005.657 5.657l.8-.8a1.5 1.5 0 011.536-.328l2.714.815c.618.196 1.043.766 1.043 1.414v1.372a1.5 1.5 0 01-1.5 1.5C9.163 21.75 2.25 14.837 2.25 6.338z"
+      <!-- Left column: CTA block first, then contact details -->
+      <div class="space-y-8">
+        <!-- CTA Card (dominant) -->
+        <div class="rounded-xl border border-stone-700 bg-stone-800/30 p-6">
+          <p class="text-lg font-semibold text-white leading-snug">
+            {contact.ctaHeadline}
+          </p>
+          <div class="mt-5">
+            <Button
+              text={contact.whatsappLabel}
+              href={whatsappHref}
+              variant="primary"
+              size="lg"
             />
-          </svg>
-          <span>{contact.phone}</span>
+            <p class="mt-2 text-sm text-stone-400">{contact.whatsappMicrocopy}</p>
+          </div>
         </div>
 
-        <div class="flex items-center gap-3 text-stone-300">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="20"
-            height="20"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            stroke-width="2"
-            class="shrink-0 text-amber-400"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"
-            />
-          </svg>
-          <span>{contact.email}</span>
-        </div>
+        <!-- Contact details -->
+        <div class="space-y-4">
+          <div class="flex items-center gap-3 text-stone-300">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" class="shrink-0 text-amber-400">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.338c0-.828.672-1.5 1.5-1.5h1.372c.648 0 1.218.425 1.414 1.043l.815 2.714a1.5 1.5 0 01-.328 1.536l-.8.801a11.21 11.21 0 005.657 5.657l.8-.8a1.5 1.5 0 011.536-.328l2.714.815c.618.196 1.043.766 1.043 1.414v1.372a1.5 1.5 0 01-1.5 1.5C9.163 21.75 2.25 14.837 2.25 6.338z" />
+            </svg>
+            <a href={phoneHref} class="hover:text-amber-400 hover:underline transition-colors">{contact.phone}</a>
+          </div>
 
-        <div class="flex items-center gap-3 text-stone-300">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="20"
-            height="20"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            stroke-width="2"
-            class="shrink-0 text-amber-400"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"
-            />
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"
-            />
-          </svg>
-          <span>{contact.address}</span>
-        </div>
+          <div class="flex items-center gap-3 text-stone-300">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" class="shrink-0 text-amber-400">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+            </svg>
+            <a href={`mailto:${contact.email}`} class="hover:text-amber-400 hover:underline transition-colors">{contact.email}</a>
+          </div>
 
-        <div class="mt-8">
-          <Button
-            text="Escribinos por WhatsApp"
-            href={`https://wa.me/${contact.whatsapp}`}
-            variant="primary"
-          />
+          <div class="flex items-center gap-3 text-stone-300">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" class="shrink-0 text-amber-400">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+            </svg>
+            <span>{contact.address}</span>
+          </div>
         </div>
       </div>
 
-      <!-- Schedule -->
+      <!-- Right column: Schedule -->
       <div class="space-y-3">
+        <h3 class="mb-4 text-lg font-semibold text-white">Horario</h3>
         {days.map(({ key, label }) => {
           const hours = schedule[key];
           return (
-            <div class="flex justify-between">
+            <div class="flex justify-between border-b border-stone-800 pb-2">
               <span class="text-stone-400">{label}</span>
               <span class={hours === 'Cerrado' ? 'text-red-400/70' : 'text-white'}>{hours}</span>
             </div>
