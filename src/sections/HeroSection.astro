@@ -9,15 +9,20 @@ interface Props {
     primary: string;
     secondary: string;
   };
+  heroImage: string;
 }
 
-const { name, tagline, description, cta } = Astro.props;
+const { name, tagline, description, cta, heroImage } = Astro.props;
 ---
 
-<section
-  id="inicio"
-  class="relative min-h-screen flex items-center justify-center bg-gradient-to-b from-stone-950 via-stone-900 to-stone-950"
->
+<section id="inicio" class="relative flex min-h-screen items-center justify-center overflow-hidden">
+  <img
+    src={heroImage}
+    alt=""
+    class="absolute inset-0 h-full w-full object-cover"
+    aria-hidden="true"
+  />
+  <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-stone-950"></div>
   <div class="relative z-10 mx-auto max-w-3xl px-6 py-20 text-center text-white">
     <h1 class="text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
       {name}

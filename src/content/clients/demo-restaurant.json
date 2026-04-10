@@ -3,6 +3,22 @@
   "tagline": "Auténtica cocina italiana en el corazón de Madrid",
   "description": "Pasta fresca, pizzas artesanales y el mejor ambiente italiano.",
 
+  "images": {
+    "hero": "/images/hero.webp",
+    "interior": "/images/interior.webp",
+    "gallery": [
+      { "src": "/images/pasta.webp", "alt": "Pasta fresca artesanal" },
+      { "src": "/images/pizza.webp", "alt": "Pizza napolitana" },
+      { "src": "/images/dish.webp", "alt": "Plato del chef" }
+    ]
+  },
+
+  "featuredDishes": [
+    { "name": "Carbonara Tradicional", "price": "14€", "image": "/images/pasta.webp", "alt": "Pasta fresca artesanal" },
+    { "name": "Pizza Napolitana", "price": "16€", "image": "/images/pizza.webp", "alt": "Pizza napolitana" },
+    { "name": "Plato del Chef", "price": "18€", "image": "/images/dish.webp", "alt": "Plato del chef" }
+  ],
+
   "about": {
     "title": "Nuestra Historia",
     "text": "Desde 2005, La Trattoria Milano trae los sabores de la Toscana a Madrid. Nuestro chef Luca Bianchi selecciona ingredientes frescos cada mañana del Mercado de la Paz para crear platos que honran la tradición italiana con un toque madrileño."
@@ -54,6 +70,12 @@
     "tiktok": "",
     "facebook": ""
   },
+
+  "reviews": [
+    { "name": "María G.", "text": "La mejor carbonara de Madrid, sin duda. El ambiente es increíble.", "rating": 5 },
+    { "name": "Carlos R.", "text": "Fuimos para un aniversario y la atención fue impecable. Volveremos seguro.", "rating": 5 },
+    { "name": "Ana P.", "text": "La bruschetta y el tiramisú son espectaculares. Muy recomendable.", "rating": 4 }
+  ],
 
   "sections": {
     "hero": true,

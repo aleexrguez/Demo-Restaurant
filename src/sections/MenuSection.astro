@@ -1,20 +1,42 @@
 ---
-import type { Menu, CTA } from '../types/client';
+import type { Menu, CTA, FeaturedDish } from '../types/client';
 import SectionHeading from '../components/SectionHeading.astro';
 import Button from '../components/Button.astro';
 
 interface Props {
   menu: Menu;
   cta: CTA;
+  featuredDishes: FeaturedDish[];
 }
 
-const { menu, cta } = Astro.props;
+const { menu, cta, featuredDishes } = Astro.props;
 ---
 
-<section id="carta" class="bg-gradient-to-b from-stone-950 to-stone-900 py-20 px-6">
+<section id="carta" class="scroll-mt-20 bg-gradient-to-b from-stone-950 to-stone-900 py-20 px-6">
   <div class="mx-auto max-w-5xl">
     <SectionHeading title="Nuestra Carta" />
 
+    <!-- Featured Dishes -->
+    {featuredDishes.length > 0 && (
+      <div class="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-3">
+        {featuredDishes.map((dish) => (
+          <div class="group relative overflow-hidden rounded-xl">
+            <img
+              src={dish.image}
+              alt={dish.alt}
+              class="aspect-[3/4] w-full object-cover transition-transform duration-300 group-hover:scale-105"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+            <div class="absolute bottom-0 left-0 right-0 p-4">
+              <p class="text-lg font-semibold text-white">{dish.name}</p>
+              <p class="font-semibold text-amber-300">{dish.price}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    )}
+
+    <!-- Category Grid -->
     <div class="mt-12 grid grid-cols-1 gap-8 md:grid-cols-2">
       {menu.categories.map((category) => (
         <div class="rounded-xl border border-stone-700 bg-stone-800/50 p-6">

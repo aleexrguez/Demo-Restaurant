@@ -21,6 +21,12 @@ const { name, sections } = Astro.props;
       {sections.menu && (
         <a href="#carta" class="text-stone-300 transition-colors hover:text-amber-400">Carta</a>
       )}
+      {sections.gallery && (
+        <a href="#galeria" class="text-stone-300 transition-colors hover:text-amber-400">Galería</a>
+      )}
+      {sections.reviews && (
+        <a href="#opiniones" class="text-stone-300 transition-colors hover:text-amber-400">Opiniones</a>
+      )}
       {sections.contact && (
         <a href="#contacto" class="text-stone-300 transition-colors hover:text-amber-400">Contacto</a>
       )}
@@ -54,6 +60,12 @@ const { name, sections } = Astro.props;
       )}
       {sections.menu && (
         <a href="#carta" class="px-6 py-3 text-stone-300 transition-colors hover:text-amber-400">Carta</a>
+      )}
+      {sections.gallery && (
+        <a href="#galeria" class="px-6 py-3 text-stone-300 transition-colors hover:text-amber-400">Galería</a>
+      )}
+      {sections.reviews && (
+        <a href="#opiniones" class="px-6 py-3 text-stone-300 transition-colors hover:text-amber-400">Opiniones</a>
       )}
       {sections.contact && (
         <a href="#contacto" class="px-6 py-3 text-stone-300 transition-colors hover:text-amber-400">Contacto</a>

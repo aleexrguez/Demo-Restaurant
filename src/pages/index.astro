@@ -5,6 +5,8 @@ import HeaderSection from '../sections/HeaderSection.astro';
 import HeroSection from '../sections/HeroSection.astro';
 import AboutSection from '../sections/AboutSection.astro';
 import MenuSection from '../sections/MenuSection.astro';
+import GallerySection from '../sections/GallerySection.astro';
+import ReviewsSection from '../sections/ReviewsSection.astro';
 import ContactSection from '../sections/ContactSection.astro';
 import FooterSection from '../sections/FooterSection.astro';
 import rawData from '../content/clients/demo-restaurant.json';
@@ -21,13 +23,20 @@ const data = rawData as const satisfies ClientData;
         tagline={data.tagline}
         description={data.description}
         cta={data.cta}
+        heroImage={data.images.hero}
       />
     )}
     {data.sections.about && (
-      <AboutSection about={data.about} />
+      <AboutSection about={data.about} image={data.images.interior} />
     )}
     {data.sections.menu && (
-      <MenuSection menu={data.menu} cta={data.cta} />
+      <MenuSection menu={data.menu} cta={data.cta} featuredDishes={data.featuredDishes} />
+    )}
+    {data.sections.gallery && (
+      <GallerySection gallery={data.images.gallery} />
+    )}
+    {data.sections.reviews && (
+      <ReviewsSection reviews={data.reviews} />
     )}
     {data.sections.contact && (
       <ContactSection contact={data.contact} schedule={data.schedule} />

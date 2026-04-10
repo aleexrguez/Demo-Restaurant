@@ -54,15 +54,42 @@ export interface Sections {
   contact: boolean;
 }
 
+export interface GalleryImage {
+  src: string;
+  alt: string;
+}
+
+export interface Images {
+  hero: string;
+  interior: string;
+  gallery: GalleryImage[];
+}
+
+export interface FeaturedDish {
+  name: string;
+  price: string;
+  image: string;
+  alt: string;
+}
+
+export interface Review {
+  name: string;
+  text: string;
+  rating: number;
+}
+
 export interface ClientData {
   name: string;
   tagline: string;
   description: string;
+  images: Images;
   about: About;
   contact: Contact;
   schedule: Schedule;
   cta: CTA;
   menu: Menu;
+  featuredDishes: FeaturedDish[];
   social: Social;
+  reviews: Review[];
   sections: Sections;
 }
