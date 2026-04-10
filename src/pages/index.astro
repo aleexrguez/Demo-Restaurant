@@ -87,6 +87,33 @@ const jsonLd = {
       <ContactSection contact={data.contact} schedule={data.schedule} />
     )}
   </main>
-  <FooterSection name={data.name} social={data.social} />
+  <FooterSection name={data.name} social={data.social} footer={data.footer} contact={data.contact} />
+
+  <button
+    id="scroll-to-top"
+    class="fixed bottom-6 right-6 z-50 flex h-10 w-10 items-center justify-center rounded-full border border-stone-700 bg-stone-900/90 text-amber-400 shadow-lg backdrop-blur-sm transition-all duration-500 hover:bg-amber-600 hover:text-white opacity-0 translate-y-4 pointer-events-none"
+    aria-label="Volver arriba"
+    type="button"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />
+    </svg>
+  </button>
+
+  <script>
+    const btn = document.getElementById('scroll-to-top');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 600) {
+        btn?.classList.remove('opacity-0', 'translate-y-4', 'pointer-events-none');
+        btn?.classList.add('opacity-100', 'translate-y-0');
+      } else {
+        btn?.classList.add('opacity-0', 'translate-y-4', 'pointer-events-none');
+        btn?.classList.remove('opacity-100', 'translate-y-0');
+      }
+    });
+    btn?.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
   <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 </MainLayout>

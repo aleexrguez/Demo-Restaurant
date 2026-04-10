@@ -19,11 +19,11 @@ const { about, image } = Astro.props;
           {about.text}
         </p>
       </div>
-      <div>
+      <div class="group overflow-hidden rounded-xl">
         <img
           src={image}
           alt={about.title}
-          class="w-full rounded-xl object-cover shadow-lg shadow-black/30"
+          class="w-full object-cover shadow-lg shadow-black/30 transition-transform duration-300 group-hover:scale-105"
         />
       </div>
     </div>

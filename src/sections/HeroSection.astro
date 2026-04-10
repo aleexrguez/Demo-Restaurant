@@ -22,16 +22,17 @@ const { name, tagline, description, cta, heroImage } = Astro.props;
     class="absolute inset-0 h-full w-full object-cover"
     aria-hidden="true"
   />
-  <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_20%,rgba(0,0,0,0.6)_70%)]"></div>
-  <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-stone-950"></div>
+  <div class="absolute inset-0 bg-black/50"></div>
+  <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(0,0,0,0.2)_0%,rgba(0,0,0,0.7)_80%)]"></div>
+  <div class="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-stone-950"></div>
   <div class="relative z-10 mx-auto max-w-3xl px-6 py-20 text-center text-white">
-    <h1 class="text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
+    <h1 class="text-4xl font-bold tracking-tight drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)] sm:text-5xl lg:text-6xl">
       {name}
     </h1>
-    <p class="mt-4 text-lg font-light text-amber-300 sm:text-xl lg:text-2xl">
+    <p class="mt-4 text-lg font-light text-amber-300 drop-shadow-[0_1px_6px_rgba(0,0,0,0.6)] sm:text-xl lg:text-2xl">
       {tagline}
     </p>
-    <p class="mt-6 text-base leading-relaxed text-stone-300 sm:text-lg">
+    <p class="mt-6 text-base leading-relaxed text-stone-200 drop-shadow-[0_1px_4px_rgba(0,0,0,0.5)] sm:text-lg">
       {description}
     </p>
     <div class="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">

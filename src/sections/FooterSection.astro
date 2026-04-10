@@ -1,12 +1,16 @@
 ---
-import type { Social } from '../types/client';
+import type { Social, Footer, Contact } from '../types/client';
 
 interface Props {
   name: string;
   social: Social;
+  footer: Footer;
+  contact: Contact;
 }
 
-const { name, social } = Astro.props;
+const { name, social, footer, contact } = Astro.props;
+
+const phoneHref = `tel:${contact.phone.replace(/\s/g, '')}`;
 
 const socialLinks = [
   {
@@ -32,27 +36,55 @@ const socialLinks = [
 const visibleLinks = socialLinks.filter((link) => link.url !== '');
 ---
 
-<footer class="border-t border-stone-800 bg-stone-950 py-10 px-6">
-  <div class="mx-auto max-w-5xl text-center">
-    <p class="text-lg font-bold text-amber-400">{name}</p>
-
-    {visibleLinks.length > 0 && (
-      <div class="mt-4 flex justify-center gap-6">
-        {visibleLinks.map((link) => (
-          <a
-            href={link.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={link.label}
-            class="text-stone-400 transition-colors hover:text-amber-400"
-            set:html={link.svg}
-          />
-        ))}
+<footer class="border-t border-stone-800 bg-stone-950 py-12 px-6">
+  <div class="mx-auto max-w-5xl">
+    <div class="grid grid-cols-1 gap-10 text-center md:grid-cols-3 md:text-left">
+      <!-- Left: Brand -->
+      <div>
+        <p class="text-lg font-bold text-amber-400">{name}</p>
+        <p class="mt-2 text-sm text-stone-400">{footer.tagline}</p>
       </div>
-    )}
 
-    <p class="mt-6 text-sm text-stone-500">
-      &copy; {new Date().getFullYear()} {name}. Todos los derechos reservados.
-    </p>
+      <!-- Center: Quick links -->
+      <div>
+        <p class="mb-3 text-sm font-semibold uppercase tracking-wider text-stone-500">Enlaces</p>
+        <ul class="space-y-2">
+          {footer.links.map((link) => (
+            <li>
+              <a href={link.href} class="text-stone-300 transition-colors hover:text-amber-400">{link.text}</a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Right: Social + Phone -->
+      <div>
+        <p class="mb-3 text-sm font-semibold uppercase tracking-wider text-stone-500">Seguinos</p>
+        {visibleLinks.length > 0 && (
+          <div class="flex justify-center gap-4 md:justify-start">
+            {visibleLinks.map((link) => (
+              <a
+                href={link.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={link.label}
+                class="text-stone-400 transition-colors hover:text-amber-400"
+                set:html={link.svg}
+              />
+            ))}
+          </div>
+        )}
+        <a href={phoneHref} class="mt-4 inline-block text-sm text-stone-400 transition-colors hover:text-amber-400">
+          {contact.phone}
+        </a>
+      </div>
+    </div>
+
+    <!-- Copyright -->
+    <div class="mt-10 border-t border-stone-800 pt-6 text-center">
+      <p class="text-sm text-stone-500">
+        &copy; {new Date().getFullYear()} {name}. Todos los derechos reservados.
+      </p>
+    </div>
   </div>
 </footer>

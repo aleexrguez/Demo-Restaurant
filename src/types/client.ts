@@ -26,6 +26,18 @@ export interface Contact {
   ctaHeadline: string;
   whatsappLabel: string;
   whatsappMicrocopy: string;
+  mapEmbed: string;
+  mapLink: string;
+}
+
+export interface FooterLink {
+  text: string;
+  href: string;
+}
+
+export interface Footer {
+  tagline: string;
+  links: FooterLink[];
 }
 
 export interface Schedule {
@@ -101,5 +113,6 @@ export interface ClientData {
   featuredDishes: FeaturedDish[];
   social: Social;
   reviews: Review[];
+  footer: Footer;
   sections: Sections;
 }

@@ -37,7 +37,9 @@
     "address": "Calle Gran Vía 45, Madrid",
     "ctaHeadline": "¿Querés vivir la experiencia italiana? Reservá tu mesa.",
     "whatsappLabel": "Reservá por WhatsApp",
-    "whatsappMicrocopy": "Respondemos en menos de 1 hora"
+    "whatsappMicrocopy": "Respondemos en menos de 1 hora",
+    "mapEmbed": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3037.2!2d-3.7037!3d40.4198!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDDCsDI1JzExLjMiTiAzwrA0MicxMy4zIlc!5e0!3m2!1ses!2ses!4v1",
+    "mapLink": "https://maps.google.com/?q=Calle+Gran+V%C3%ADa+45+Madrid"
   },
 
   "schedule": {
@@ -75,9 +77,9 @@
   },
 
   "social": {
-    "instagram": "https://instagram.com/trattoria",
-    "tiktok": "",
-    "facebook": ""
+    "instagram": "https://instagram.com/trattoriamilano",
+    "tiktok": "https://tiktok.com/@trattoriamilano",
+    "facebook": "https://facebook.com/trattoriamilano"
   },
 
   "reviews": [
@@ -85,6 +87,15 @@
     { "name": "Carlos R.", "text": "Lugar ideal para una cena tranquila. Pedimos la tabla de entrantes y la pizza napolitana. Buenos vinos por copa también.", "rating": 4 },
     { "name": "Ana P.", "text": "Fui con amigas un viernes y el ambiente estaba genial. El tiramisú es obligatorio. Ya reservamos para volver el mes que viene.", "rating": 5 }
   ],
+
+  "footer": {
+    "tagline": "Auténtica cocina italiana en Madrid",
+    "links": [
+      { "text": "Reservar mesa", "href": "#contacto" },
+      { "text": "Ver la carta", "href": "#carta" },
+      { "text": "Nuestra historia", "href": "#sobre-nosotros" }
+    ]
+  },
 
   "sections": {
     "hero": true,
