@@ -21,6 +21,8 @@ const { title, description, ogImage } = Astro.props;
     {description && <meta property="og:description" content={description} />}
     {ogImage && <meta property="og:image" content={ogImage} />}
     <meta property="og:type" content="website" />
+    <link rel="icon" type="image/png" href="/images/favicon.png" />
+    <link rel="apple-touch-icon" href="/images/favicon.png" />
   </head>
   <body class="bg-stone-950 text-white">
     <slot />
